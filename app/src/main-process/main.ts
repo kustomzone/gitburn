@@ -146,7 +146,7 @@ app.on('will-finish-launching', () => {
       // This manual focus call _shouldn't_ be necessary, but is for Chrome on
       // macOS.
       window.focus()
-      window.sendURLAction()
+      window.sendURLAction(action)
     })
   })
 })
