@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path')
+const Fs = require('fs')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const webpack = require('webpack')
@@ -10,6 +11,30 @@ const devClientId = 'b1a3601b8940d46bc1e3'
 const devClientSecret = '3344c2b0b92df4d1cbf768b50708b27a199f6a14'
 
 const environment = process.env.NODE_ENV || 'development'
+
+/**
+ * Attempt to dereference the given ref without requiring a Git environment
+ * to be present. Note that this method will not be able to dereference packed
+ * refs but should suffice for simple refs like 'HEAD'
+ *
+ * Will throw an error for unborn HEAD.
+ *
+ * @param {string} gitDir The path to the Git repository's .git directory
+ * @param {string} ref    A qualified git ref such as 'HEAD' or 'refs/heads/master'
+ */
+function revParse(gitDir, ref) {
+
+  const refPath = path.join(gitDir, ref)
+  const refContents = Fs.readFileSync(refPath)
+  const refRe = /^([a-f0-9]{40})|(?:ref: (refs\/.*))$/m
+  const refMatch = refRe.exec(refContents)
+
+  if (!refMatch) {
+    throw new Error(`Could not de-reference HEAD to SHA, invalid ref in ${refPath}: ${refContents}`)
+  }
+
+  return refMatch[1] || revParse(gitDir, refMatch[2])
+}
 
 const replacements = {
   __OAUTH_CLIENT_ID__: JSON.stringify(process.env.DESKTOP_OAUTH_CLIENT_ID || devClientId),
