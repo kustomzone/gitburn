@@ -90,7 +90,7 @@ function prepareStackTrace(error: Error, frames: ReadonlyArray<any>) {
 export function enableSourceMaps() {
   sourceMapSupport.install({
     environment: 'node',
-    handleUncaughtExceptions: false
+    handleUncaughtExceptions: false,
     retrevieveSourceMap,
   })
 
