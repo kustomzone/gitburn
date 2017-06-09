@@ -37,7 +37,7 @@ function getState(props: ITitleBarProps): ITitleBarState {
   return {
     style: props.windowZoomFactor
       ? { zoom: 1 / props.windowZoomFactor }
-      : undefined
+      : undefined,
     }
 }
 
@@ -54,7 +54,7 @@ export class TitleBar extends React.Component<ITitleBarProps, ITitleBarState> {
 
     switch (actionOnDobuleClick) {
       case 'Maximize':
-        mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize
+        mainWindow.isMaximized() ? mainWindow.unmaximize() : mainWindow.maximize()
         break
       case 'Minimize':
         mainWindow.minimize()
