@@ -52,7 +52,7 @@ declare interface IDesktopLogger {
    */
   error(message: string, error?: Error): void
 
-   /**
+  /**
    * Writes a log message at the 'warn' level.
    *
    * The error will be persisted to disk as long as the disk transport is
@@ -69,7 +69,7 @@ declare interface IDesktopLogger {
    */
   warn(message: string, error?: Error): void
 
-   /**
+  /**
    * Writes a log message at the 'info' level.
    *
    * The error will be persisted to disk as long as the disk transport is
