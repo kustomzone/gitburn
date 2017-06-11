@@ -44,13 +44,13 @@ export function requirest(endpoint: string, authorization: string | null, method
   }, customHeaders)
 
   if (authorization) {
-    header['Authorization'] = authorization
+    headers['Authorization'] = authorization
   }
 
   const options = {
     headers,
     method,
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
   }
 
   return fetch(url.href, options)
