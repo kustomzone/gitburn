@@ -36,7 +36,7 @@ export interface IDailyMeasures {
   readonly openShellCount: number
 
   /** The number of partial commits. */
-  readonly parialCommits: number
+  readonly partialCommits: number
 }
 
 export class StatsDatabase extends Dexie {
