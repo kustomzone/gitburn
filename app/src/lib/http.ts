@@ -34,7 +34,7 @@ export async function deserialize<T>(response: Response | string): Promise<T | n
  * @param body          - The body to send.
  * @param customHeaders - Any optional additional headers to send.
  */
-export function requirest(endpoint: string, authorization: string | null, method: HTTPMethod, path: string, body?: Object, customHeaders?: Object): Promise<Response> {
+export function request(endpoint: string, authorization: string | null, method: HTTPMethod, path: string, body?: Object, customHeaders?: Object): Promise<Response> {
   const url = new URL(path, endpoint)
 
   const headers: any = Object.assign({}, {
