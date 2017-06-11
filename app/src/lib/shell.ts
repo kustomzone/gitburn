@@ -1,10 +1,10 @@
 /* tslint:disable:no-sync-functions */
 
-import * as ChildProcess from 'child-process'
-import * as Os from 'os'
+import * as ChildProcess from 'child_process'
+import * as os from 'os'
 
 type IndexLookup = {
-  [propName: string]: string
+  [propName: string]: string;
 }
 
 /**
