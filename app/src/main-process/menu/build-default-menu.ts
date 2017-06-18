@@ -211,7 +211,7 @@ export function buildDefaultMenu(sharedProcess: SharedProcess): Electron.Menu {
         click: emit('open-in-shell'),
       },
       {
-        label: __DARWIN__ ? 'Open in Finder' : '&Open in Explorer',
+        label: __DARWIN__ ? 'Show in Finder' : 'Show in E&xplorer',
         id: 'open-working-directory',
         accelerator: 'CmdOrCtrl+Shift+F',
         click: emit('open-working-directory'),
@@ -282,7 +282,14 @@ export function buildDefaultMenu(sharedProcess: SharedProcess): Electron.Menu {
   const submitIssueItem: Electron.MenuItemOptions = {
     label: __DARWIN__ ? 'Report Issue…' : 'Report issue…',
     click() {
-      shell.openExternal('https://github.com/sbg-projectx/gitburn/issues/new')
+      shell.openExternal('https://github.com/siberianmh/gitburn/issues/new')
+    },
+  }
+
+  const showUserGuides: Electron.MenuItemOptions = {
+    label: 'Show User Guides',
+    click() {
+      shell.openExternal('https://help.github.com/desktop-beta/guides/')
     },
   }
 
@@ -295,6 +302,7 @@ export function buildDefaultMenu(sharedProcess: SharedProcess): Electron.Menu {
 
   const helpItems = [
     submitIssueItem,
+    showUserGuides,
     showLogsItem,
   ]
 
